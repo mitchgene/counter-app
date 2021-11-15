@@ -1,0 +1,58 @@
+.flex-row {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: .6rem 0;
+}
+
+.icon {
+  font-size: 16rem;
+  padding: 8rem 0;
+  transition: .2s ease;
+}
+
+.red-btn {
+  background: red;
+}
+
+[name="skull"] {
+  color: #1eaedb;
+  transition: 3s ease;
+}
+
+.mw-count {
+  border-radius: 4px;
+  box-shadow: 2px 2px 6px lightsalmon;
+  font-size: 2rem;
+  padding: .4rem;
+  margin: 0 0 .8rem;
+  width: 6rem;
+  text-align: center;
+}
+
+.exam-count {
+  padding: .4rem;
+  border-radius: 4px;
+  box-shadow: 2px 2px 6px lightsalmon;
+  font-size: 2rem;
+  padding: .4rem;
+  margin: 0 .8rem .8rem;
+  width: 6rem;
+  align-content: center;
+  text-align: center;
+}
+
+.row-two {
+  transition: 1s ease;
+}
+
+.hide {
+  opacity: 0;
+}
