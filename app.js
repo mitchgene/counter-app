@@ -346,18 +346,20 @@ const playerArray = [playerA, playerB, playerC, playerD, playerE, playerF];
 
 // display room array on hidden div
 
-mwCountA.addEventListener('mouseenter', function(e) {
+mwCountA.addEventListener('click', function(e) {
   playerA.arrayBox.innerText = playerA.mwRooms;
-  setTimeout(() => {arrayBoxes[0].classList.remove('hidden');}, 800)
+  arrayBoxes[0].classList.contains('hidden') ? arrayBoxes[0].classList.remove('hidden') :
+  arrayBoxes[0].classList.add('hidden');
 });
 
 mwCountA.addEventListener('mouseleave', function(e) {
   arrayBoxes[0].classList.add('hidden');
 });
 
-examCountA.addEventListener('mouseenter', function(e) {
+examCountA.addEventListener('click', function(e) {
   playerA.arrayBox.innerText = playerA.examRooms;
-  setTimeout(() => {arrayBoxes[0].classList.remove('hidden');}, 800)
+  arrayBoxes[0].classList.contains('hidden') ? arrayBoxes[0].classList.remove('hidden') :
+  arrayBoxes[0].classList.add('hidden');
 });
 
 examCountA.addEventListener('mouseleave', function(e) {
@@ -366,18 +368,20 @@ examCountA.addEventListener('mouseleave', function(e) {
 
 // player B
 
-mwCountB.addEventListener('mouseenter', function(e) {
+mwCountB.addEventListener('click', function(e) {
   playerB.arrayBox.innerText = playerB.mwRooms;
-  setTimeout(() => {arrayBoxes[1].classList.remove('hidden');}, 800)
+  arrayBoxes[1].classList.contains('hidden') ? arrayBoxes[1].classList.remove('hidden') :
+  arrayBoxes[1].classList.add('hidden');
 });
 
 mwCountB.addEventListener('mouseleave', function(e) {
   arrayBoxes[1].classList.add('hidden');
 });
 
-examCountB.addEventListener('mouseenter', function(e) {
+examCountB.addEventListener('click', function(e) {
   playerB.arrayBox.innerText = playerB.examRooms;
-  setTimeout(() => {arrayBoxes[1].classList.remove('hidden');}, 800)
+  arrayBoxes[1].classList.contains('hidden') ? arrayBoxes[1].classList.remove('hidden') :
+  arrayBoxes[1].classList.add('hidden');
 });
 
 examCountB.addEventListener('mouseleave', function(e) {
@@ -386,18 +390,20 @@ examCountB.addEventListener('mouseleave', function(e) {
 
 // player C
 
-mwCountC.addEventListener('mouseenter', function(e) {
+mwCountC.addEventListener('click', function(e) {
   playerC.arrayBox.innerText = playerC.mwRooms;
-  setTimeout(() => {arrayBoxes[2].classList.remove('hidden');}, 800)
+  arrayBoxes[2].classList.contains('hidden') ? arrayBoxes[2].classList.remove('hidden') :
+  arrayBoxes[2].classList.add('hidden');
 });
 
 mwCountC.addEventListener('mouseleave', function(e) {
   arrayBoxes[2].classList.add('hidden');
 });
 
-examCountC.addEventListener('mouseenter', function(e) {
+examCountC.addEventListener('click', function(e) {
   playerC.arrayBox.innerText = playerC.examRooms;
-  setTimeout(() => {arrayBoxes[2].classList.remove('hidden');}, 800)
+  arrayBoxes[2].classList.contains('hidden') ? arrayBoxes[2].classList.remove('hidden') :
+  arrayBoxes[2].classList.add('hidden');
 });
 
 examCountC.addEventListener('mouseleave', function(e) {
@@ -406,18 +412,20 @@ examCountC.addEventListener('mouseleave', function(e) {
 
 // player D
 
-mwCountD.addEventListener('mouseenter', function(e) {
+mwCountD.addEventListener('click', function(e) {
   playerD.arrayBox.innerText = playerD.mwRooms;
-  setTimeout(() => {arrayBoxes[3].classList.remove('hidden');}, 800)
+  arrayBoxes[3].classList.contains('hidden') ? arrayBoxes[3].classList.remove('hidden') :
+  arrayBoxes[3].classList.add('hidden');
 });
 
 mwCountD.addEventListener('mouseleave', function(e) {
   arrayBoxes[3].classList.add('hidden');
 });
 
-examCountD.addEventListener('mouseenter', function(e) {
+examCountD.addEventListener('click', function(e) {
   playerD.arrayBox.innerText = playerD.examRooms;
-  setTimeout(() => {arrayBoxes[3].classList.remove('hidden');}, 800)
+  arrayBoxes[3].classList.contains('hidden') ? arrayBoxes[3].classList.remove('hidden') :
+  arrayBoxes[3].classList.add('hidden');
 });
 
 examCountD.addEventListener('mouseleave', function(e) {
@@ -426,18 +434,20 @@ examCountD.addEventListener('mouseleave', function(e) {
 
 // player E
 
-mwCountE.addEventListener('mouseenter', function(e) {
+mwCountE.addEventListener('click', function(e) {
   playerE.arrayBox.innerText = playerE.mwRooms;
-  setTimeout(() => {arrayBoxes[4].classList.remove('hidden');}, 800)
+  arrayBoxes[3].classList.contains('hidden') ? arrayBoxes[3].classList.remove('hidden') :
+  arrayBoxes[3].classList.add('hidden');
 });
 
 mwCountE.addEventListener('mouseleave', function(e) {
   arrayBoxes[4].classList.add('hidden');
 });
 
-examCountE.addEventListener('mouseenter', function(e) {
+examCountE.addEventListener('click', function(e) {
   playerE.arrayBox.innerText = playerE.examRooms;
-  setTimeout(() => {arrayBoxes[4].classList.remove('hidden');}, 800)
+  arrayBoxes[4].classList.contains('hidden') ? arrayBoxes[4].classList.remove('hidden') :
+  arrayBoxes[4].classList.add('hidden');
 });
 
 examCountE.addEventListener('mouseleave', function(e) {
@@ -446,18 +456,20 @@ examCountE.addEventListener('mouseleave', function(e) {
 
 // player F
 
-mwCountF.addEventListener('mouseenter', function(e) {
+mwCountF.addEventListener('click', function(e) {
   playerF.arrayBox.innerText = playerF.mwRooms;
-  setTimeout(() => {arrayBoxes[5].classList.remove('hidden');}, 800)
+  arrayBoxes[5].classList.contains('hidden') ? arrayBoxes[5].classList.remove('hidden') :
+  arrayBoxes[5].classList.add('hidden');
 });
 
 mwCountF.addEventListener('mouseleave', function(e) {
   arrayBoxes[5].classList.add('hidden');
 });
 
-examCountF.addEventListener('mouseenter', function(e) {
+examCountF.addEventListener('click', function(e) {
   playerF.arrayBox.innerText = playerF.examRooms;
-  setTimeout(() => {arrayBoxes[5].classList.remove('hidden');}, 800)
+  arrayBoxes[5].classList.contains('hidden') ? arrayBoxes[5].classList.remove('hidden') :
+  arrayBoxes[5].classList.add('hidden');
 });
 
 examCountF.addEventListener('mouseleave', function(e) {
