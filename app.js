@@ -38,12 +38,12 @@ const playerForm = document.querySelector('.player-form');
 
 playerForm.addEventListener('submit', function(e) {
   e.preventDefault();
-  playerBoxArray[0].childNodes[1].innerText = inputArray[0].value;
-  playerBoxArray[1].childNodes[1].innerText = inputArray[1].value;
-  playerBoxArray[2].childNodes[1].innerText = inputArray[2].value;
-  playerBoxArray[3].childNodes[1].innerText = inputArray[3].value;
-  playerBoxArray[4].childNodes[1].innerText = inputArray[4].value;
-  playerBoxArray[5].childNodes[1].innerText = inputArray[5].value;
+  playerBoxArray[0].childNodes[3].innerText = inputArray[0].value;
+  playerBoxArray[1].childNodes[3].innerText = inputArray[1].value;
+  playerBoxArray[2].childNodes[3].innerText = inputArray[2].value;
+  playerBoxArray[3].childNodes[3].innerText = inputArray[3].value;
+  playerBoxArray[4].childNodes[3].innerText = inputArray[4].value;
+  playerBoxArray[5].childNodes[3].innerText = inputArray[5].value;
 
   inputArray.forEach(input => {
     input.value = '';
@@ -274,6 +274,7 @@ const playerA = {
   examCounter: examCountArray[0],
   mwBtn: mwBtns[0],
   examBtn: examBtns[0],
+  arrayBox: arrayBoxes[0]
 }
 
 // Player A object
@@ -285,7 +286,8 @@ const playerB = {
   mwCounter: mwCountArray[1],
   examCounter: examCountArray[1],
   mwBtn: mwBtns[1],
-  examBtn: examBtns[1]
+  examBtn: examBtns[1],
+  arrayBox: arrayBoxes[1]
 }
 
 // Player A object
@@ -297,7 +299,8 @@ const playerC = {
   mwCounter: mwCountArray[2],
   examCounter: examCountArray[2],
   mwBtn: mwBtns[2],
-  examBtn: examBtns[2]
+  examBtn: examBtns[2],
+  arrayBox: arrayBoxes[2]
 }
 
 // Player A object
@@ -309,7 +312,8 @@ const playerD = {
   mwCounter: mwCountArray[3],
   examCounter: examCountArray[3],
   mwBtn: mwBtns[3],
-  examBtn: examBtns[3]
+  examBtn: examBtns[3],
+  arrayBox: arrayBoxes[3]
 }
 
 // Player A object
@@ -321,7 +325,8 @@ const playerE = {
   mwCounter: mwCountArray[4],
   examCounter: examCountArray[4],
   mwBtn: mwBtns[4],
-  examBtn: examBtns[4]
+  examBtn: examBtns[4],
+  arrayBox: arrayBoxes[4]
 }
 
 // Player A object
@@ -333,7 +338,128 @@ const playerF = {
   mwCounter: mwCountArray[5],
   examCounter: examCountArray[5],
   mwBtn: mwBtns[5],
-  examBtn: examBtns[5]
+  examBtn: examBtns[5],
+  arrayBox: arrayBoxes[5]
 }
 
+const playerArray = [playerA, playerB, playerC, playerD, playerE, playerF];
+
 // display room array on hidden div
+
+mwCountA.addEventListener('mouseenter', function(e) {
+  playerA.arrayBox.innerText = playerA.mwRooms;
+  setTimeout(() => {arrayBoxes[0].classList.remove('hidden');}, 800)
+});
+
+mwCountA.addEventListener('mouseleave', function(e) {
+  arrayBoxes[0].classList.add('hidden');
+});
+
+examCountA.addEventListener('mouseenter', function(e) {
+  playerA.arrayBox.innerText = playerA.examRooms;
+  setTimeout(() => {arrayBoxes[0].classList.remove('hidden');}, 800)
+});
+
+examCountA.addEventListener('mouseleave', function(e) {
+  arrayBoxes[0].classList.add('hidden');
+});
+
+// player B
+
+mwCountB.addEventListener('mouseenter', function(e) {
+  playerB.arrayBox.innerText = playerB.mwRooms;
+  setTimeout(() => {arrayBoxes[1].classList.remove('hidden');}, 800)
+});
+
+mwCountB.addEventListener('mouseleave', function(e) {
+  arrayBoxes[1].classList.add('hidden');
+});
+
+examCountB.addEventListener('mouseenter', function(e) {
+  playerB.arrayBox.innerText = playerB.examRooms;
+  setTimeout(() => {arrayBoxes[1].classList.remove('hidden');}, 800)
+});
+
+examCountB.addEventListener('mouseleave', function(e) {
+  arrayBoxes[1].classList.add('hidden');
+});
+
+// player C
+
+mwCountC.addEventListener('mouseenter', function(e) {
+  playerC.arrayBox.innerText = playerC.mwRooms;
+  setTimeout(() => {arrayBoxes[2].classList.remove('hidden');}, 800)
+});
+
+mwCountC.addEventListener('mouseleave', function(e) {
+  arrayBoxes[2].classList.add('hidden');
+});
+
+examCountC.addEventListener('mouseenter', function(e) {
+  playerC.arrayBox.innerText = playerC.examRooms;
+  setTimeout(() => {arrayBoxes[2].classList.remove('hidden');}, 800)
+});
+
+examCountC.addEventListener('mouseleave', function(e) {
+  arrayBoxes[2].classList.add('hidden');
+});
+
+// player D
+
+mwCountD.addEventListener('mouseenter', function(e) {
+  playerD.arrayBox.innerText = playerD.mwRooms;
+  setTimeout(() => {arrayBoxes[3].classList.remove('hidden');}, 800)
+});
+
+mwCountD.addEventListener('mouseleave', function(e) {
+  arrayBoxes[3].classList.add('hidden');
+});
+
+examCountD.addEventListener('mouseenter', function(e) {
+  playerD.arrayBox.innerText = playerD.examRooms;
+  setTimeout(() => {arrayBoxes[3].classList.remove('hidden');}, 800)
+});
+
+examCountD.addEventListener('mouseleave', function(e) {
+  arrayBoxes[3].classList.add('hidden');
+});
+
+// player E
+
+mwCountE.addEventListener('mouseenter', function(e) {
+  playerE.arrayBox.innerText = playerE.mwRooms;
+  setTimeout(() => {arrayBoxes[4].classList.remove('hidden');}, 800)
+});
+
+mwCountE.addEventListener('mouseleave', function(e) {
+  arrayBoxes[4].classList.add('hidden');
+});
+
+examCountE.addEventListener('mouseenter', function(e) {
+  playerE.arrayBox.innerText = playerE.examRooms;
+  setTimeout(() => {arrayBoxes[4].classList.remove('hidden');}, 800)
+});
+
+examCountE.addEventListener('mouseleave', function(e) {
+  arrayBoxes[4].classList.add('hidden');
+});
+
+// player F
+
+mwCountF.addEventListener('mouseenter', function(e) {
+  playerF.arrayBox.innerText = playerF.mwRooms;
+  setTimeout(() => {arrayBoxes[5].classList.remove('hidden');}, 800)
+});
+
+mwCountF.addEventListener('mouseleave', function(e) {
+  arrayBoxes[5].classList.add('hidden');
+});
+
+examCountF.addEventListener('mouseenter', function(e) {
+  playerF.arrayBox.innerText = playerF.examRooms;
+  setTimeout(() => {arrayBoxes[5].classList.remove('hidden');}, 800)
+});
+
+examCountF.addEventListener('mouseleave', function(e) {
+  arrayBoxes[5].classList.add('hidden');
+});

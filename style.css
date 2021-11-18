@@ -2,6 +2,10 @@ body{
   overflow-x: hidden;
 }
 
+p{
+  letter-spacing: .1rem;
+}
+
 .flex-row {
   display: flex;
   justify-content: center;
@@ -62,10 +66,10 @@ button {
   transition: .6s ease;
 }
 
-.hide {
+.hidden {
   opacity: 0;
-  transform: translateY(-100vh);
-  transition: 1s ease;
+  transform: translateY(-4vh);
+  transition: .4s ease;
 }
 
 .therapy-modal{
@@ -76,4 +80,22 @@ button {
   width: 30vw;
   z-index: 1;
   transition: .6s ease;
+}
+
+.player-box{
+  transition: .6s ease;
+}
+
+.array-box{
+  height: 1.8rem;
+  max-width: 50vw;
+  width: fit-content;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 9px;
+  border-top-left-radius: 0;
+  box-shadow: 2px 2px 6px #DB1EAE;
+  padding: .2rem .6rem;
+  transition: .3s ease;
+
 }
