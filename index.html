@@ -7,117 +7,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous"
     referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.2.4/dist/frappe-charts.min.iife.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
-<body>
+<body class="transition content-hidden">
 
-  <button class="button reset-btn">
-    reset
-  </button>
+  <ion-icon class="menu-button" name="radio-button-off-outline"></ion-icon>
 
-  <!-- <div class="therapy-modal flex-col hide">
-    <table class="therapy-table">
+  <!-- sidebar navigation -->
 
-    </table> -->
+  <div class="nav transition">
+    <a class="button reset-btn">
+      reset
+    </a>
+
+    <ion-icon class="mode-icon transition" name="sunny-outline"></ion-icon>
+    <li class="nav-item">
+      <a class="nav-link" aria-controls="introduction">Introduction</a>
+    </li>
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" aria-controls="page-one">Controls</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-controls="page-two">Workflow</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-controls="page-three">Data</a>
+      </li>
+    </ul>
+
   </div>
 
-  <div class="container">
+  <div id="introduction" class="page inactive transition invisible">
+    <div class="section container">
+      <h2>What it is</h2>
+      <p>
+        The Counter App is a tool designed to keep track of the number of therapies and exams that each therapist performs daily. The application also provides workload measurement tooling as well as data visualization capabilities.
+      </p>
+      <h3>Why it exists</h3>
+      <p>
+        The Counter App was built to provide an easy and efficient way to keep track of the daily workload of each therapist. With this app, therapists can log the number of therapies and exams they perform each day, and the app will automatically
+        calculate the total workload and display it in a simple and easy-to-read format.
+      </p>
+      <p>
+        The workload measurement tool allows therapists to see how many therapies and exams they are projected to execute and are capable of completing. This data can be used to optimize time management and workload distribution, ensuring that each
+        therapist is working at an optimal level.
+      </p>
+      <p>
+        The data visualization capabilities of the Counter App allow for easy analysis of the workload data and work that has been already completed. The app can create graphs and charts to visually display this data, making it easier to
+        identify patterns and trends.
+      </p>
+      <p>
+        This application was intended as a tool to optimize therapist output and ensure that each therapist is working at a realistic and optimal level.
+      </p>
+    </div>
 
-    <div class="row">
+  </div>
 
-      <div id="playerA" class="four columns player-box">
-        <p class="array-box-A array-box hidden"></p>
-        <h3 class="player-name"></h3>
-        <div class="flex-col">
-          <div class="flex-row">
-            <span class="mw-count mw-count-a">
-              0
-            </span>
-            <span class="exam-count exam-count-a">
-              0
-            </span>
-          </div>
-          <div class="flex-row">
-            <button id="mw-btn-a" class="button-primary mw-btn">
-              MW
-            </button>
-            <button id="exam-btn-a" class="button exam-btn">
-              Exam
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <div id="playerB" class="four columns player-box">
-        <p class="array-box-B array-box hidden">hello</p>
-        <h3 class="player-name"></h3>
-        <div class="flex-col">
-          <div class="flex-row">
-            <span class="mw-count counter mw-count-b">
-              0
-            </span>
-            <span class="exam-count counter exam-count-b">
-              0
-            </span>
-          </div>
-          <div class="flex-row">
-            <button id="mw-btn-b" class="button-primary mw-btn">
-              MW
-            </button>
-            <button id="exam-btn-b" class="button exam-btn">
-              Exam
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <div id="playerC" class="four columns player-box">
-        <p class="array-box-C array-box hidden">hello</p>
-        <h3 class="player-name"></h3>
-        <div class="flex-col">
-          <div class="flex-row">
-            <span class="mw-count counter mw-count-c">
-              0
-            </span>
-            <span class="exam-count counter exam-count-c">
-              0
-            </span>
-          </div>
-          <div class="flex-row">
-            <button id="mw-btn-c" class="button-primary mw-btn">
-              MW
-            </button>
-            <button id="exam-btn-c" class="button exam-btn">
-              Exam
-            </button>
-          </div>
-        </div>
-
-      </div>
-
+  <div id="page-one" class="page transition">
+    <div class="container">
       <div class="row">
 
-        <div id="playerD" class="four columns player-box">
-          <p class="array-box-D array-box hidden">hello</p>
+        <div id="playerA" class="four columns player-box">
+          <p class="array-box-A array-box hidden"></p>
           <h3 class="player-name"></h3>
           <div class="flex-col">
             <div class="flex-row">
-              <span class="mw-count counter mw-count-d">
+              <span class="mw-count counter mw-count-a">
                 0
               </span>
-              <span class="exam-count counter exam-count-d">
+              <span class="exam-count exam-count-a">
                 0
               </span>
             </div>
             <div class="flex-row">
-              <button id="mw-btn-d" class="button-primary mw-btn">
+              <button id="mw-btn-a" class="button-primary mw-btn">
                 MW
               </button>
-              <button id="exam-btn-d" class="button exam-btn">
+              <button id="exam-btn-a" class="button exam-btn">
                 Exam
               </button>
             </div>
@@ -125,23 +95,23 @@
 
         </div>
 
-        <div id="playerE" class="four columns player-box">
-          <p class="array-box-E array-box hidden">hello</p>
+        <div id="playerB" class="four columns player-box">
+          <p class="array-box-B array-box hidden"></p>
           <h3 class="player-name"></h3>
           <div class="flex-col">
             <div class="flex-row">
-              <span class="mw-count counter mw-count-e">
+              <span class="mw-count counter mw-count-b">
                 0
               </span>
-              <span class="exam-count counter exam-count-e">
+              <span class="exam-count counter exam-count-b">
                 0
               </span>
             </div>
             <div class="flex-row">
-              <button id="mw-btn-e" class="button-primary mw-btn">
+              <button id="mw-btn-b" class="button-primary mw-btn">
                 MW
               </button>
-              <button id="exam-btn-e" class="button exam-btn">
+              <button id="exam-btn-b" class="button exam-btn">
                 Exam
               </button>
             </div>
@@ -149,47 +119,109 @@
 
         </div>
 
-        <div id="playerF" class="four columns player-box">
-          <p class="array-box-F array-box hidden">hello</p>
+        <div id="playerC" class="four columns player-box">
+          <p class="array-box-C array-box hidden"></p>
           <h3 class="player-name"></h3>
           <div class="flex-col">
             <div class="flex-row">
-              <span class="mw-count counter mw-count-f">
+              <span class="mw-count counter mw-count-c">
                 0
               </span>
-              <span class="exam-count counter exam-count-f">
+              <span class="exam-count counter exam-count-c">
                 0
               </span>
             </div>
             <div class="flex-row">
-              <button id="mw-btn-f" class="button-primary mw-btn">
+              <button id="mw-btn-c" class="button-primary mw-btn">
                 MW
               </button>
-              <button id="exam-btn-f" class="button exam-btn">
+              <button id="exam-btn-c" class="button exam-btn">
                 Exam
               </button>
             </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div id="playerD" class="four columns player-box">
+            <p class="array-box-D array-box hidden"></p>
+            <h3 class="player-name"></h3>
+            <div class="flex-col">
+              <div class="flex-row">
+                <span class="mw-count counter mw-count-d">
+                  0
+                </span>
+                <span class="exam-count counter exam-count-d">
+                  0
+                </span>
+              </div>
+              <div class="flex-row">
+                <button id="mw-btn-d" class="button-primary mw-btn">
+                  MW
+                </button>
+                <button id="exam-btn-d" class="button exam-btn">
+                  Exam
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="playerE" class="four columns player-box">
+            <p class="array-box-E array-box hidden"></p>
+            <h3 class="player-name"></h3>
+            <div class="flex-col">
+              <div class="flex-row">
+                <span class="mw-count counter mw-count-e">
+                  0
+                </span>
+                <span class="exam-count counter exam-count-e">
+                  0
+                </span>
+              </div>
+              <div class="flex-row">
+                <button id="mw-btn-e" class="button-primary mw-btn">
+                  MW
+                </button>
+                <button id="exam-btn-e" class="button exam-btn">
+                  Exam
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="playerF" class="four columns player-box">
+            <p class="array-box-F array-box hidden"></p>
+            <h3 class="player-name"></h3>
+            <div class="flex-col">
+              <div class="flex-row">
+                <span class="mw-count counter mw-count-f">
+                  0
+                </span>
+                <span class="exam-count counter exam-count-f">
+                  0
+                </span>
+              </div>
+              <div class="flex-row">
+                <button id="mw-btn-f" class="button-primary mw-btn">
+                  MW
+                </button>
+                <button id="exam-btn-f" class="button exam-btn">
+                  Exam
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row flex-row">
-
-      <!-- <ion-icon class="icon cloud" name="cloud-outline"></ion-icon> -->
-
-      <ion-icon class="icon six columns" name="skull"></ion-icon>
-
-
-    </div>
-
-    <div class="container">
-      <div class="row row-two">
+      <!-- <div class="row row-two section">
 
         <h2>Start here</h2>
 
@@ -205,16 +237,146 @@
           <button type="submit" id="submit-btn" action="">Submit</button>
         </form>
 
-      </div>
+      </div> -->
     </div>
 
 
+  </div>
 
 
+  <!-- 1.8 version testing from here -->
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="app.js" charset="utf-8"></script>
+
+  <div id="page-two" class="page inactive transition invisible">
+    <div class="section">
+      <div class="container">
+        <h2 class="">Side desk workflow</h2>
+
+        <hr>
+
+        <form>
+          <p>Plug the numbers</p>
+          <div class="row">
+            <div class="six columns">
+              <label for="minutes-per-muscle-work">Minutes per muscle work</label>
+              <input class="u-full-width" type="number" min="1" required id="minutes-per-mw" name="minutes-per-mw" step=".1">
+            </div>
+            <div class="six columns">
+              <label for="total-muscle-works">Total muscle work</label>
+              <input class="u-full-width" type="number" min="1" required id="total-mw" name="total-muscle-works">
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="mw-per-therapist-per-hour">MW per therapist per hour</label>
+              <input class="u-full-width" type="number" min="1" required id="mw-per-hour" name="mw-per-hour" step=".1">
+            </div>
+            <div class="six columns">
+              <label for="number-of-therapists">Number of therapists</label>
+              <input class="u-full-width" type="number" min="1" required id="number-of-therapists" name="number-of-therapists">
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="hours-in-shift">Hours in shift</label>
+              <input class="" type="number" min="1" required id="hours-in-shift" name="hours-in-shift">
+            </div>
+            <div class="six columns">
+              <label for="no-show-percent">No-show percentage (optional)</label>
+              <input class="" type="number" min="1" id="no-show-percent" name="no-show-percent">
+            </div>
+          </div>
+          <div class="row">
+            <div class="twelve columns">
+              <input class="button-primary" type="submit" value="Submit">
+              <button id="clear-btn" class="button">Clear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <table class="u-full-width hidden transition">
+          <thead>
+            <tr>
+              <th></th>
+              <th>total</th>
+              <th>potential</th>
+              <th>Overflow</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="transition">
+              <td class="transition">Overview:</td>
+              <td class="transition hidden" id="th"></td>
+              <td class="transition hidden" id="ph"></td>
+              <td class="transition hidden" id="mwo"></td>
+            </tr>
+            <tr class="transition">
+              <td class="transition">Therapy:</td>
+              <td class="transition hidden" id="tm"></td>
+              <td class="transition hidden" id="pm"></td>
+              <td class="transition hidden" id="om"></td>
+            </tr>
+            <tr class="transition">
+              <td class="transition">Individual:</td>
+              <td class="transition hidden" id="tme"></td>
+              <td class="transition hidden" id="pme"></td>
+              <td class="transition hidden" id="pmte"></td>
+              <td class="transition hidden" id="omwe"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="page-three" class="page inactive transition invisible">
+    <div class="section container-md">
+      <h2>Dashboard</h2>
+    </div>
+
+    <div class="section transition" id="chart"></div>
+
+  </div>
+
+  </div>
+
+
+  <div class="row flex-row">
+    <ion-icon class="icon six columns" name="skull"></ion-icon>
+  </div>
+
+  <div class="container player-wrapper">
+    <div class="row row-two">
+
+      <h2>Start here</h2>
+
+      <p class="">Who is playing today?</p>
+
+      <form class="player-form" action="" method="post">
+        <input autocomplete="off" class="player-input" type="text" id="inputA">
+        <input autocomplete="off" class="player-input" type="text" id="inputB">
+        <input autocomplete="off" class="player-input" type="text" id="inputC">
+        <input autocomplete="off" class="player-input" type="text" id="inputD">
+        <input autocomplete="off" class="player-input" type="text" id="inputE">
+        <input autocomplete="off" class="player-input" type="text" id="inputF">
+        <button type="submit" id="submit-btn" action="">Submit</button>
+      </form>
+
+    </div>
+  </div>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="js/app.js" charset="utf-8"></script>
+  <script src="js/storage.js" charset="utf-8"></script>
+  <script src="js/data.js" charset="utf-8"></script>
+  <script src="js/dark-mode.js" charset="utf-8"></script>
 </body>
 
 </html>

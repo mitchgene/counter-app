@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="transition content-hidden">
+
+    <a href="index.html" class="button player-btn">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      Board
+    </a>
+
+    <ion-icon class="mode-icon transition" name="sunny-outline"></ion-icon>
+
+
+    <div class="section">
+      <div class="container">
+        <h2 class="">Side desk workflow</h2>
+
+        <hr>
+
+        <form>
+          <p>Plug the numbers</p>
+          <div class="row">
+            <div class="six columns">
+              <label for="minutes-per-muscle-work">Minutes per muscle work</label>
+              <input class="u-full-width" type="number" min="1" required id="minutes-per-mw" name="minutes-per-mw" step=".1">
+            </div>
+            <div class="six columns">
+              <label for="total-muscle-works">Total muscle work</label>
+              <input class="u-full-width" type="number" min="1" required id="total-mw" name="total-muscle-works">
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="mw-per-therapist-per-hour">MW per therapist per hour</label>
+              <input class="u-full-width" type="number" min="1" required id="mw-per-hour" name="mw-per-hour" step=".1">
+            </div>
+            <div class="six columns">
+              <label for="number-of-therapists">Number of therapists</label>
+              <input class="u-full-width" type="number" min="1" required id="number-of-therapists" name="number-of-therapists">
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <label for="hours-in-shift">Hours in shift</label>
+              <input class="" type="number" min="1" required id="hours-in-shift" name="hours-in-shift">
+            </div>
+            <div class="six columns">
+              <label for="no-show-percent">No show percentage (optional)</label>
+              <input class="" type="number" min="1" id="no-show-percent" name="no-show-percent">
+            </div>
+          </div>
+          <div class="row">
+            <div class="twelve columns">
+              <input class="button-primary" type="submit" value="Submit">
+              <button id="clear-btn" class="button">Clear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <table class="u-full-width hidden transition">
+  <thead>
+    <tr>
+      <th></th>
+      <th>total</th>
+      <th>potential</th>
+      <th>Overflow</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="transition">
+      <td class="transition">Overview:</td>
+      <td class="transition hidden" id="th"></td>
+      <td class="transition hidden" id="ph"></td>
+      <td class="transition hidden" id="mwo"></td>
+    </tr>
+    <tr class="transition">
+      <td class="transition">Therapy:</td>
+      <td class="transition hidden" id="tm"></td>
+      <td class="transition hidden" id="pm"></td>
+      <td class="transition hidden" id="om"></td>
+    </tr>
+    <tr class="transition">
+      <td class="transition">Individual:</td>
+      <td class="transition hidden" id="tme"></td>
+      <td class="transition hidden" id="pme"></td>
+      <td class="transition hidden" id="pmte"></td>
+      <td class="transition hidden" id="omwe"></td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="js/data.js" charset="utf-8"></script>
+    <script src="js/dark-mode.js" charset="utf-8"></script>
+
+  </body>
+</html>
