@@ -25,9 +25,9 @@ body.nav-open {
 }
 
 /* nav styling */
-
 .nav {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: absolute;
   border-right: 1px solid #3b3f54;
   width: 19rem;
@@ -35,54 +35,56 @@ body.nav-open {
   top: 0;
 }
 
-.reset-btn{
+.reset-btn {
   margin-bottom: 3rem;
 }
 
-.nav-item{
+.nav-item {
   list-style: none;
 }
 
-.nav-list{
+.nav-list {
   margin-top: 2rem;
+  position: sticky;
+  top: 4rem;
 }
 
-.nav-link{
+.nav-link {
   color: #333;
   cursor: pointer;
   display: block;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   background: #e2dddd;
   color: #333;
 }
 
-.nav-link.dark{
+.nav-link.dark {
   color: #f3f3f3;
 }
 
-.nav-link.dark:hover{
+.nav-link.dark:hover {
   background-color: #30363e;
 }
 
-
-
-ul .nav-link{
+ul .nav-link {
   padding: .8rem 1.8rem;
 }
 
-.nav-link{
+.nav-link {
   padding: .8rem .4rem;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   text-decoration: underline;
 }
 
 .menu-button {
   font-size: 2.6rem;
   cursor: pointer;
+  position: sticky;
+  top: 1rem;
 }
 
 p {
@@ -94,7 +96,7 @@ p {
   transition: .4s ease;
 }
 
-.container-md{
+.container-md {
   width: 89%;
   margin: 0 auto;
 }
@@ -177,6 +179,10 @@ button {
   padding: .4rem
 }
 
+h3.winning{
+  color: gold;
+}
+
 .mw-count {
   border-radius: 4px;
   font-size: 2rem;
@@ -240,7 +246,7 @@ button {
   display: none;
 }
 
-.invisible{
+.invisible {
   opacity: 0;
 }
 

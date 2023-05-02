@@ -43,13 +43,13 @@
 
   <div id="introduction" class="page inactive transition invisible">
     <div class="section container">
-      <h2>What it is</h2>
+      <h4>What it is</h4>
       <p>
-        The Counter App is a tool designed to keep track of the number of therapies and exams that each therapist performs daily. The application also provides workload measurement tooling as well as data visualization capabilities.
+        a tool designed to keep track of the number of therapies and exams that each therapist performs daily. The application also provides workload measurement tooling as well as data visualization capabilities.
       </p>
-      <h3>Why it exists</h3>
+      <h4>Why it exists</h4>
       <p>
-        The Counter App was built to provide an easy and efficient way to keep track of the daily workload of each therapist. With this app, therapists can log the number of therapies and exams they perform each day, and the app will automatically
+        to provide an easy and efficient way to keep track of the daily workload of each therapist. Therapists can log the number of therapies and exams they perform each day, and it will automatically
         calculate the total workload and display it in a simple and easy-to-read format.
       </p>
       <p>
@@ -57,7 +57,7 @@
         therapist is working at an optimal level.
       </p>
       <p>
-        The data visualization capabilities of the Counter App allow for easy analysis of the workload data and work that has been already completed. The app can create graphs and charts to visually display this data, making it easier to
+        Data visualization allows for easy analysis of the workload data and work that has been already completed. The app can create graphs and charts to visually display this data, making it easier to
         identify patterns and trends.
       </p>
       <p>
@@ -281,10 +281,6 @@
               <label for="hours-in-shift">Hours in shift</label>
               <input class="" type="number" min="1" required id="hours-in-shift" name="hours-in-shift">
             </div>
-            <div class="six columns">
-              <label for="no-show-percent">No-show percentage (optional)</label>
-              <input class="" type="number" min="1" id="no-show-percent" name="no-show-percent">
-            </div>
           </div>
           <div class="row">
             <div class="twelve columns">
@@ -336,10 +332,28 @@
 
   <div id="page-three" class="page inactive transition invisible">
     <div class="section container-md">
-      <h2>Dashboard</h2>
+      <h2>Analysis</h2>
     </div>
 
-    <div class="section transition" id="chart"></div>
+    <div class="section container-md">
+      <div class="row mb-6">
+        <div class="twelve columns" id="chart"></div>
+
+        <button class="button">dataset a</button>
+        <button class="button">dataset b</button>
+      </div>
+      <div class="row">
+        <div class="container">
+          <div class="six columns" id="pieChartOne"></div>
+          <div class="six columns" id="pieChartTwo"></div>
+        </div>
+
+
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
 
   </div>
 

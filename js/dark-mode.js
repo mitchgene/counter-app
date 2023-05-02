@@ -1,4 +1,4 @@
-// function to toggle mode
+// toggle mode
 
 const modeDark = function(el, dark) {
   dark === true ?
@@ -9,28 +9,6 @@ const modeDark = function(el, dark) {
       item.classList.remove('dark-mode');
     })
 }
-
-// define object for localStorage
-
-// const storage = {
-//   storeData(key, value) {
-//     localStorage.setItem(key, JSON.stringify(value));
-//   },
-//   pullData(key) {
-//     const item = localStorage.getItem(key);
-//     try {
-//       return JSON.parse(item);
-//     } catch (error) {
-//       return item;
-//     }
-//   },
-//   checkData(key) {
-//     return localStorage.hasOwnProperty(key)
-//   },
-//   killData(key) {
-//     return localStorage.removeItem(key);
-//   }
-// }
 
 const body = document.querySelector('body');
 const icon = document.querySelector('.mode-icon');
@@ -62,6 +40,8 @@ if (document.querySelector('.mode-icon')) {
     }
   });
 }
+
+// hide content until DOM loads
 
 window.addEventListener('DOMContentLoaded', () => {
 

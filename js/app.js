@@ -173,25 +173,129 @@ playerForm.addEventListener('submit', function(e) {
   }
 });
 
+// testing intervals and timing
+
+const alarm = {
+  intervalsRunning: false,
+    init() {
+    const logIntervalId = setInterval(() => {
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const minutes = now.getMinutes();
+      if (minutes === 0) {
+        console.log(`yep fuck its ${now}`)
+      }
+    }, 1000);
+    }
+}
+
+
+// object to run at certain times for dataset
+const getData = {
+  intervalsRunning: false,
+
+  init() {
+    // Call the function immediately
+    this.checkDayAndTime();
+
+    // Set up a setInterval to call the function every minute
+    setInterval(() => {
+      this.checkDayAndTime();
+    }, 60 * 1000); // 1 minute in milliseconds
+  },
+
+  checkDayAndTime() {
+    if (this.intervalsRunning) {
+      return; // Intervals are already running, exit early
+    }
+
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // Sunday is 0, Monday is 1, and so on
+    const hour = now.getHours();
+
+    // Check if it's Tuesday or Thursday and between 2pm and 6:30pm
+    if ((dayOfWeek === 2 || dayOfWeek === 4) && hour >= 14 && hour < 18) {
+      console.log('hey there'); // Log 'hey there' immediately
+
+      // Set up the setInterval to log 'hey there' every 20 minutes until 6:30pm
+      const intervalId = setInterval(() => {
+        console.log('hey there');
+      }, 20 * 60 * 1000); // 20 minutes in milliseconds
+
+      // Set up another setInterval to clear the first one after 6:30pm
+      const clearId = setInterval(() => {
+        const now = new Date();
+        const hour = now.getHours();
+
+        if (hour >= 18) {
+          clearInterval(intervalId);
+          clearInterval(clearId);
+          this.intervalsRunning = false;
+        }
+      }, 60 * 1000); // 1 minute in milliseconds
+
+      this.intervalsRunning = true;
+
+    // Check if it's Monday, Wednesday, or Friday and between 7:30am and 6:30pm
+    } else if ((dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5) && hour >= 7 && hour < 18) {
+      console.log('hey there'); // Log 'hey there' immediately
+
+      // Set up the setInterval to log 'hey there' every 20 minutes until 6:30pm
+      const intervalId = setInterval(() => {
+        console.log('hey there');
+      }, 20 * 60 * 1000); // 20 minutes in milliseconds
+
+      // Set up another setInterval to clear the first one after 6:30pm
+      const clearId = setInterval(() => {
+        const now = new Date();
+        const hour = now.getHours();
+
+        if (hour >= 18) {
+          clearInterval(intervalId);
+          clearInterval(clearId);
+          this.intervalsRunning = false;
+        }
+      }, 60 * 1000); // 1 minute in milliseconds
+
+      this.intervalsRunning = true;
+    }
+  }
+};
+
+// Call the init() method of the heyThereOnWeekdays object
+getData.init();
+
+
 // start timer on schedule
 
-function dataInterval(time, func) {
-  setInterval(() => {func()}, time)
+function dataInterval( func, time ) {
+  return setInterval(() => { func() }, time)
 }
 
 function dataCollection() {
     playerArray.forEach(player => {
       player.data.mw.push(player.mwRooms.length);
       player.data.exams.push(player.examRooms.length);
+      let rn = new Date()
+      console.log(`shit, its already ${rn}`);
     })
 }
 
+// this needs testing -setInterval and clearInterval
+
 function dataRecord() {
+  let minute = 1000 * 60;
   let currentDay = new Date();
-  if (currentDay === 1 || currentDay === 3 || currentDay === 5) {
-    currentDay.getHours() >= 8 && currentDay.getHours() < 19 ? dataInterval(dataCollection) : clearInterval(dataCollection)
+  let day = currentDay.getDay();
+  let hours = currentDay.getHours();
+  let intervalId;
+
+  if (day === 1 || day === 3 || day === 5) {
+    console.log(`yes its working and its ${currentDay}`)
+    intervalId = hours < 8 && hours > 19 ? clearInterval(intervalId) : dataInterval(dataCollection, minute * 20);
   } else {
-    currentDay.getHours() >=14 && currentDay.getHours() < 19 ? dataInterval(dataCollection) : clearInterval(dataCollection)
+    console.log(`fuck its not working its ${ currentDay }`);
+    intervalId = hours < 14 && hours > 19 ? clearInterval(intervalId) : dataInterval(dataCollection, minute * 20);
   }
 }
 
@@ -481,10 +585,12 @@ function uniFunc(rooms, num, countElem) {
 
 for (let i = 0; i < playerArray.length; i++) {
   playerArray[i].mwBtn.addEventListener('click', () => {
-    uniFunc(playerArray[i].mwRooms, playerArray[i].num, playerArray[i].mwCounter)
+    uniFunc(playerArray[i].mwRooms, playerArray[i].num, playerArray[i].mwCounter);
+    playerArray[i].data.mw.push(playerArray[i].mwRooms.length)
   });
   playerArray[i].examBtn.addEventListener('click', () => {
-    uniFunc(playerArray[i].examRooms, playerArray[i].num, playerArray[i].examCounter)
+    uniFunc(playerArray[i].examRooms, playerArray[i].num, playerArray[i].examCounter);
+    playerArray[i].data.exams.push(playerArray[i].examRooms.length)
   })
 }
 
