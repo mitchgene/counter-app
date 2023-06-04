@@ -13,6 +13,7 @@ const modeDark = function(el, dark) {
 const body = document.querySelector('body');
 const icon = document.querySelector('.mode-icon');
 const navLinks = [...document.querySelectorAll('.nav-link')];
+const chartLinks = [...document.querySelectorAll('.chart-link')];
 
 
 if (document.querySelector('.mode-icon')) {
@@ -23,6 +24,7 @@ if (document.querySelector('.mode-icon')) {
 
       body.classList.remove('dark-mode');
       navLinks.forEach(link => link.classList.remove('dark'))
+      chartLinks.forEach(link => link.classList.remove('dark'))
       storage.killData('dark-mode');
 
       modeDark('.exam-count', false)
@@ -32,6 +34,7 @@ if (document.querySelector('.mode-icon')) {
 
       body.classList.add('dark-mode');
       navLinks.forEach(link => link.classList.add('dark'))
+      chartLinks.forEach(link => link.classList.add('dark'))
       storage.storeData('dark-mode', 'true');
 
       modeDark('.exam-count', true)

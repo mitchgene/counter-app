@@ -9,7 +9,7 @@ function work(mwMinutes, mwTotal, mwTherapistHour, therapists, shiftHours) {
 
   let showPercentage = .9;
 
-  this.mwMinutes = mwMinutes;
+  this.mwMinutes = mwMinutes * showPercentage;
   this.mwTotal = mwTotal * showPercentage;
   this.mwTherapistHour = mwTherapistHour;
   this.therapists = therapists;
@@ -24,7 +24,7 @@ function work(mwMinutes, mwTotal, mwTherapistHour, therapists, shiftHours) {
   this.mwTotalMinutes = mwMinutes * mwTotal;
   this.mwPotentialMinutes = (mwMinutes * mwTherapistHour) * (shiftHours * therapists);
   this.mwPerTherapist = mwTotal / therapists;
-  this.overflow = (this.mwTotalMinutes - this.mwPotentialMinutes) / this.therapists;
+  this.overflow = (this.mwTotalMinutes - this.mwPotentialMinutes)
 
 }
 
@@ -43,8 +43,19 @@ const table = {
   table: document.querySelector('table'),
   total: document.querySelector('#th'),
   potential: document.querySelector('#ph'),
-  mwPer: document.querySelector('#mwpt'),
-  mwOver: document.querySelector('#mwo')
+  mwOver: document.querySelector('#mwo'),
+
+  // overall therapy row
+
+  allMW: document.querySelector('#tm'),
+  potentialNumMw: document.querySelector('#pm'),
+  overflowMw: document.querySelector('#om'),
+
+  // individual row
+
+  totalMwEach: document.querySelector('#tme'),
+  potentialMwEach: document.querySelector('#pme'),
+  overMwEach: document.querySelector('#omwe')
 }
 
 form.form.addEventListener('submit', (e) => {
@@ -67,10 +78,39 @@ form.form.addEventListener('submit', (e) => {
   }, 250)
 
   setTimeout(() => {
-    table.mwOver.innerText = `${ Math.ceil(wl.overflow) } minutes`;
+    table.mwOver.innerText = `${ Math.ceil( wl.overflow ) } minutes`;
     table.mwOver.classList.remove('hidden');
   }, 325)
 
+  setTimeout(() => {
+    table.allMW.innerText = `${ Math.floor( wl.mwTotal ) } mw`;
+    table.allMW.classList.remove('hidden');
+  }, 200)
+
+  setTimeout(() => {
+    table.potentialNumMw.innerText = `${ Math.floor( wl.mwPotentialMinutes / wl.mwMinutes ) } mw`;
+    table.potentialNumMw.classList.remove('hidden');
+  }, 250)
+
+  setTimeout(() => {
+    table.overflowMw.innerText = `${ Math.floor( (wl.mwTotal - ( wl.mwPotentialMinutes / wl.mwMinutes ))   ).toFixed() } mw`;
+    table.overflowMw.classList.remove('hidden');
+  }, 325)
+
+  setTimeout(() => {
+    table.totalMwEach.innerText = `${ Math.floor( wl.mwTotal / wl.therapists ) } mw`;
+    table.totalMwEach.classList.remove('hidden');
+  }, 200)
+
+  setTimeout(() => {
+    table.potentialMwEach.innerText = `${ (Math.floor( wl.mwPotentialMinutes / wl.mwMinutes) / wl.therapists).toFixed()  } mw`;
+    table.potentialMwEach.classList.remove('hidden');
+  }, 250)
+
+  setTimeout(() => {
+    table.overMwEach.innerText = `${ Math.ceil( (wl.mwTotal - ( wl.mwPotentialMinutes / wl.mwMinutes )) / wl.therapists ).toFixed()  } mw`;
+    table.overMwEach.classList.remove('hidden');
+  }, 325)
 })
 
 form.clear.addEventListener('click', (e) => {
@@ -85,17 +125,33 @@ form.clear.addEventListener('click', (e) => {
 // observer to draw chart with player values
 
 const observer = new MutationObserver(() => {
+
+  // push player values to each option correctly
+
   playerArray.forEach((player, index) => {
-    data.datasets.forEach((dataset, dataIndex) => {
+
+    // add listener to chart links -> update chart options accordingly
+
+    // if checkbox is checked -> do a another thing
+
+    data_a.datasets.forEach((dataset, dataIndex) => {
+
       if (index === dataIndex) {
+
         dataset.name = player.name;
         dataset.values = player.data.mw;
+
       }
     })
+
   });
+
   chart.draw();
-  pieChart.draw();
-  pieChart2.draw();
+
+  if (cheat.totalMw) {
+    pieChart.draw();
+  }
+  // pieChart2.draw();
 });
 
 let options = {
@@ -114,143 +170,140 @@ function swapChartData(chart, data) {
 
 // pie chart
 
-const mwPie = {
-  labels: ['completed mw', 'remaining mw'],
+const pie_a = {
+  labels: ['completed', 'remaining'],
   datasets: [{
     name: '',
     type: "line",
-    values: [1, 5, 7, 8, 9, 11, 13, 14, 15, 17, 19, 20, 23]
-  }],
-  yMarkers: [{
-    label: "Total MW",
-    value: 20,
-    options: {
-      labelPos: 'left'
-    }
-  }],
-  yRegions: [{
-    label: "Region",
-    start: 18,
-    end: 24,
-    options: {
-      labelPos: 'right'
-    }
+    values: [11, 54]
   }]
 }
 
-const therapistPie = {
-  labels: ['madison', 'alex', 'brianna', 'jj', 'josh', 'mitchell'],
-  datasets: [{
-    name: '',
-    type: "line",
-    values: [1, 5, 7, 8, 9, 11]
-  }],
-  yMarkers: [{
-    label: "Total MW",
-    value: 20,
-    options: {
-      labelPos: 'left'
-    }
-  }],
-  yRegions: [{
-    label: "Region",
-    start: 18,
-    end: 24,
-    options: {
-      labelPos: 'right'
-    }
-  }]
-}
-
-const pieOptions1 = {
-  data: {
-    labels: ['label1', 'label2'],
-    datasets: [{
-      name: 'someData',
-      values: [0, 1]
-    }]
-  },
-  type: 'donut',
-  height: 530
-}
-
-const pieOptions2 = {
-  data: {
-    labels: ['label1', 'label2'],
-    datasets: [{
-      name: 'someData',
-      values: [23, 56]
-    }]
-  },
-  type: 'donut',
-  height: 530
-}
-
-const pieChart = new frappe.Chart("#pieChartOne", { // or a DOM element,
+const pieChart = new frappe.Chart("#pieChartA", { // or a DOM element,
   // new Chart() in case of ES6 module with above usage
-  title: "completed mw per therapist",
-  data: mwPie,
-  type: 'pie', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-  height: 530,
+  title: "completed mw",
+  data: pie_a,
+  type: 'donut', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+  height: 430,
   colors: ['#70c1b3', '#247BA0', '#FFE066', '#F25F5C', '#783f8e', '#2FE6DE'],
   animate: 1
 })
 
-const pieChart2 = new frappe.Chart('#pieChartTwo', pieOptions1)
 
 
+// main chart
 
-
-// line chart
-
-const data = {
+const data_a = {
   labels: [8, '', 9, '', 10, '', 11, '', 12, '', 1, '', 2, '', 3, '', 4, '', 5, '', 6, '', 7],
   datasets: [{
       name: '',
-      type: "line",
-      values: [1, 5, 7, 8, 9, 11, 13, 14, 15, 17, 19, 20, 23]
+      type: "",
+      values: []
     },
     {
       name: '',
-      type: "line",
-      values: [2, 5, 8, 8, 10, 11, 14, 14, 14, 14, 14, 14, 14, 16, 19, 20, 21, 23, 24, 24, 25, 27]
+      type: "",
+      values: []
     },
     {
       name: '',
-      type: "line",
-      values: [1, 1, 2, 4, 5, 7, 8, 10, 11, 11, 13, 16, 18]
+      type: "",
+      values: []
     },
     {
       name: '',
-      type: "line",
-      values: [1, 4, 7, 9, 10, 10, 13, 14, 17, 20, 21, 22, 23]
+      type: "",
+      values: []
     },
     {
       name: '',
-      type: "line",
-      values: [1, 12, 12, 13, 13, 13, 15, 16, 17, 19, 20, 22]
+      type: "",
+      values: []
     },
     {
       name: '',
-      type: "line",
-      values: [2, 5, 6, 6, 6, 7, 8, 11, 14, 14, 14, 16, 19, 23]
+      type: "",
+      values: []
     }
   ],
   yMarkers: [{
-    label: "Total MW",
+    label: "",
     value: 20,
     options: {
       labelPos: 'left'
     }
   }],
   yRegions: [{
-    label: "Region",
-    start: 18,
-    end: 24,
+    label: "",
+    start: null,
+    end: null,
     options: {
       labelPos: 'right'
     }
   }]
+}
+
+const data_b = {
+  labels: [8, '', 9, '', 10, '', 11, '', 12, '', 1, '', 2, '', 3, '', 4, '', 5, '', 6, '', 7],
+  datasets: [{
+      name: '',
+      type: "",
+      values: []
+    },
+    {
+      name: '',
+      type: "",
+      values: []
+    },
+    {
+      name: '',
+      type: "",
+      values: []
+    },
+    {
+      name: '',
+      type: "",
+      values: []
+    },
+    {
+      name: '',
+      type: "",
+      values: []
+    },
+    {
+      name: '',
+      type: "",
+      values: []
+    }
+  ],
+  yMarkers: [{
+    label: "",
+    value: 20,
+    options: {
+      labelPos: 'left'
+    }
+  }],
+  yRegions: [{
+    label: "",
+    start: null,
+    end: null,
+    options: {
+      labelPos: 'right'
+    }
+  }],
+  title: "completed mw per therapist",
+  type: 'bar', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+  height: 560,
+  colors: ['#7cd6fd', '#743ee2', '#268', '#ea9dd0', '#ebedf0', '#c0ddf9', '#73b3f3', '#3886e1', '#17459e'],
+  lineOptions: {
+    regionFill: 0,
+    hideDots: 1,
+    heatLine: 1
+  },
+  axisOptions: {
+    xIsSeries: true // default: false
+  },
+  animate: 1,
 }
 
 // tuesday and thusday
@@ -260,45 +313,45 @@ const tuesData = {
   datasets: [{
       name: '',
       type: "line",
-      values: [1, 5, 7, 8, 9, 11, 13, 14, 15, 17, 19, 20, 23]
+      values: []
     },
     {
       name: '',
       type: "line",
-      values: [2, 5, 8, 8, 10, 11, 14, 14, 14, 14, 14, 14, 14, 16, 19, 20, 21, 23, 24, 24, 25, 27]
+      values: []
     },
     {
       name: '',
       type: "line",
-      values: [1, 1, 2, 4, 5, 7, 8, 10, 11, 11, 13, 16, 18]
+      values: []
     },
     {
       name: '',
       type: "line",
-      values: [1, 4, 7, 9, 10, 10, 13, 14, 17, 20, 21, 22, 23]
+      values: []
     },
     {
       name: '',
       type: "line",
-      values: [1, 12, 12, 13, 13, 13, 15, 16, 17, 19, 20, 22]
+      values: []
     },
     {
       name: '',
       type: "line",
-      values: [2, 5, 6, 6, 6, 7, 8, 11, 14, 14, 14, 16, 19, 23]
+      values: []
     }
   ],
   yMarkers: [{
-    label: "Total MW",
+    label: "",
     value: 20,
     options: {
       labelPos: 'left'
     }
   }],
   yRegions: [{
-    label: "Region",
-    start: 18,
-    end: 24,
+    label: "",
+    start: null,
+    end: null,
     options: {
       labelPos: 'right'
     }
@@ -308,9 +361,9 @@ const tuesData = {
 const chart = new frappe.Chart("#chart", { // or a DOM element,
   // new Chart() in case of ES6 module with above usage
   title: "completed mw per therapist",
-  data: data,
+  data: data_b,
   type: 'line', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-  height: 660,
+  height: 560,
   colors: ['#7cd6fd', '#743ee2', '#268', '#ea9dd0', '#ebedf0', '#c0ddf9', '#73b3f3', '#3886e1', '#17459e'],
   lineOptions: {
     regionFill: 0,
@@ -323,6 +376,28 @@ const chart = new frappe.Chart("#chart", { // or a DOM element,
   animate: 1,
 })
 
+const dataOptions = {
+  links: [...document.querySelectorAll('.chart-link')],
+  slider: document.querySelector('.slider'),
+  linkListen() {
+    this.links.forEach(( link, index ) => {
+      link.addEventListener('click', () => {
+        if (this.slider.checked) {
+          console.log('bar graph', index)
+        } else {
+          console.log('line chart', index)
+        }
+      })
+
+    })
+  },
+  mw: [],
+  exams: [],
+  oa: []
+}
+
+dataOptions.linkListen();
+
 
 const cheat = {
   skull: document.querySelector('[name = "skull"]'),
@@ -333,13 +408,21 @@ const cheat = {
     let winner = null;
 
     playerArray.forEach(player => {
-      const playerPoints = player.mwRooms.length + player.examRooms.length;
-      player.box.children[1].classList.remove('winning');
-      if (playerPoints > longestPoints) {
-        longestPoints = playerPoints;
-        winner = player;
+      if (player.box.children[1].classList.contains('winning')) {
+        player.box.children[1].classList.remove('winning')
+      } else {
+        const playerPoints = player.mwRooms.length + player.examRooms.length;
+        player.box.children[1].classList.remove('winning');
+        if (playerPoints > longestPoints) {
+          longestPoints = playerPoints;
+          winner = player;
+        }
       }
     });
+
+    if ( winner === null ) {
+      return;
+    }
     winner.box.children[1].classList.add('winning')
   },
   fuckYou() {
@@ -352,7 +435,8 @@ const cheat = {
     chart.draw();
   },
   getShade() {
-    chart.lineOptions.regionFill = 1
+    chart.lineOptions.regionFill = 1;
+    chart.draw();
   },
   totalMw() {
     this.totalMw = prompt('enter total projectd muscle works for today:')
@@ -368,7 +452,7 @@ const cheat = {
     body.style.color = retro[1];
     mwBtns.forEach(button => {
       button.style.background = retro[2];
-      // button.style.borderColor = retro[2];
+      button.style.borderColor = retro[2];
     });
     document.querySelector('[name="skull"]').style.color = retro[3]
   },
@@ -391,7 +475,7 @@ const cheat = {
             case 'update':
               cheat.refresh()
               break;
-            case 'shadow':
+            case 'shadows':
               cheat.getShade()
               break;
             case 'mw':
@@ -403,13 +487,13 @@ const cheat = {
             default:
           }
         }
-      }, 390);
+      }, 290);
     });
     this.skull.addEventListener('mouseup', () => {
       this.mouseIsDown = false;
     });
     if (this.totalMw) {
-
+      // code for pie chart, regionFill on main chart
     }
   }
 }

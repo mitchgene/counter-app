@@ -320,7 +320,6 @@
               <td class="transition">Individual:</td>
               <td class="transition hidden" id="tme"></td>
               <td class="transition hidden" id="pme"></td>
-              <td class="transition hidden" id="pmte"></td>
               <td class="transition hidden" id="omwe"></td>
             </tr>
           </tbody>
@@ -331,21 +330,41 @@
 
 
   <div id="page-three" class="page inactive transition invisible">
-    <div class="section container-md">
-      <h2>Analysis</h2>
+    <div class="container-md">
+      <h4>Analysis</h4>
     </div>
 
     <div class="section container-md">
       <div class="row mb-6">
-        <div class="twelve columns" id="chart"></div>
+        <div class="one columns">
+          <h5></h5>
+          <p>
+            Data points are collected twice per hour.
+          </p>
 
-        <button class="button">dataset a</button>
-        <button class="button">dataset b</button>
+          <aside>
+            <ul class="chart-nav-list">
+              <a class="chart-link">Therapy</a>
+              <a class="chart-link">Exams</a>
+              <a class="chart-link">Overall</a>
+            </ul>
+          </aside>
+
+          <label class="switch" title="bars">
+            <input type="checkbox" class="slider bar-graph">
+            <span class="slider round"></span>
+          </label>
+
+        </div>
+        <div class="eleven columns">
+          <div class="" id="chart"></div>
+        </div>
+
+
       </div>
       <div class="row">
         <div class="container">
-          <div class="six columns" id="pieChartOne"></div>
-          <div class="six columns" id="pieChartTwo"></div>
+          <div class="six columns" id="pieChartA"></div>
         </div>
 
 

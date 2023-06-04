@@ -94,14 +94,12 @@ window.addEventListener('load', function(e) {
 
   setTimeout(() => {
     if (playerArray.every(player => player.name === '' || player.name === undefined)) {
-      console.log('they are empty')
       playerArray.forEach(player => {
         player.isActive = false;
         mwBtns.forEach(btn => disable(btn, true));
         examBtns.forEach(btn => disable(btn, true));
       })
     } else {
-      console.log('they are not all empty')
       playerArray.forEach(player => {
         player.isActive = true;
         playerArray.forEach(player => {
@@ -173,133 +171,6 @@ playerForm.addEventListener('submit', function(e) {
   }
 });
 
-// testing intervals and timing
-
-const alarm = {
-  intervalsRunning: false,
-    init() {
-    const logIntervalId = setInterval(() => {
-      const now = new Date();
-      const seconds = now.getSeconds();
-      const minutes = now.getMinutes();
-      if (minutes === 0) {
-        console.log(`yep fuck its ${now}`)
-      }
-    }, 1000);
-    }
-}
-
-
-// object to run at certain times for dataset
-const getData = {
-  intervalsRunning: false,
-
-  init() {
-    // Call the function immediately
-    this.checkDayAndTime();
-
-    // Set up a setInterval to call the function every minute
-    setInterval(() => {
-      this.checkDayAndTime();
-    }, 60 * 1000); // 1 minute in milliseconds
-  },
-
-  checkDayAndTime() {
-    if (this.intervalsRunning) {
-      return; // Intervals are already running, exit early
-    }
-
-    const now = new Date();
-    const dayOfWeek = now.getDay(); // Sunday is 0, Monday is 1, and so on
-    const hour = now.getHours();
-
-    // Check if it's Tuesday or Thursday and between 2pm and 6:30pm
-    if ((dayOfWeek === 2 || dayOfWeek === 4) && hour >= 14 && hour < 18) {
-      console.log('hey there'); // Log 'hey there' immediately
-
-      // Set up the setInterval to log 'hey there' every 20 minutes until 6:30pm
-      const intervalId = setInterval(() => {
-        console.log('hey there');
-      }, 20 * 60 * 1000); // 20 minutes in milliseconds
-
-      // Set up another setInterval to clear the first one after 6:30pm
-      const clearId = setInterval(() => {
-        const now = new Date();
-        const hour = now.getHours();
-
-        if (hour >= 18) {
-          clearInterval(intervalId);
-          clearInterval(clearId);
-          this.intervalsRunning = false;
-        }
-      }, 60 * 1000); // 1 minute in milliseconds
-
-      this.intervalsRunning = true;
-
-    // Check if it's Monday, Wednesday, or Friday and between 7:30am and 6:30pm
-    } else if ((dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5) && hour >= 7 && hour < 18) {
-      console.log('hey there'); // Log 'hey there' immediately
-
-      // Set up the setInterval to log 'hey there' every 20 minutes until 6:30pm
-      const intervalId = setInterval(() => {
-        console.log('hey there');
-      }, 20 * 60 * 1000); // 20 minutes in milliseconds
-
-      // Set up another setInterval to clear the first one after 6:30pm
-      const clearId = setInterval(() => {
-        const now = new Date();
-        const hour = now.getHours();
-
-        if (hour >= 18) {
-          clearInterval(intervalId);
-          clearInterval(clearId);
-          this.intervalsRunning = false;
-        }
-      }, 60 * 1000); // 1 minute in milliseconds
-
-      this.intervalsRunning = true;
-    }
-  }
-};
-
-// Call the init() method of the heyThereOnWeekdays object
-getData.init();
-
-
-// start timer on schedule
-
-function dataInterval( func, time ) {
-  return setInterval(() => { func() }, time)
-}
-
-function dataCollection() {
-    playerArray.forEach(player => {
-      player.data.mw.push(player.mwRooms.length);
-      player.data.exams.push(player.examRooms.length);
-      let rn = new Date()
-      console.log(`shit, its already ${rn}`);
-    })
-}
-
-// this needs testing -setInterval and clearInterval
-
-function dataRecord() {
-  let minute = 1000 * 60;
-  let currentDay = new Date();
-  let day = currentDay.getDay();
-  let hours = currentDay.getHours();
-  let intervalId;
-
-  if (day === 1 || day === 3 || day === 5) {
-    console.log(`yes its working and its ${currentDay}`)
-    intervalId = hours < 8 && hours > 19 ? clearInterval(intervalId) : dataInterval(dataCollection, minute * 20);
-  } else {
-    console.log(`fuck its not working its ${ currentDay }`);
-    intervalId = hours < 14 && hours > 19 ? clearInterval(intervalId) : dataInterval(dataCollection, minute * 20);
-  }
-}
-
-// dataRecord();
 
 // create arrays and listeners for each mw button
 
@@ -433,28 +304,39 @@ const [
   examCountF
 ] = examCountArray;
 
-// create a new Date object
-const today = new Date();
 
-// check if today is Monday, Wednesday, or Friday
-const dayOfWeek = today.getDay();
+const boxColors = {
+  init() {
+    // create a new Date object
+    const today = new Date();
+    // check if today is Monday, Wednesday, or Friday
+    const dayOfWeek = today.getDay();
 
-if (dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5) {
-  // apply the "salmon" CSS class if it's Monday, Wednesday, or Friday
-  mwCountArray.forEach(item => {
-    item.classList.add("salmon");
-  });
-  examCountArray.forEach(item => {
-    item.classList.add("salmon");
-  });
-} else {
-  // apply the "cyan" CSS class if it's not Monday, Wednesday, or Friday
-  mwCountArray.forEach(item => {
-    item.classList.add("cyan");
-  });
-  examCountArray.forEach(item => {
-    item.classList.add("cyan");
-  });
+    if (dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5) {
+      // apply the "salmon" CSS class if it's Monday, Wednesday, or Friday
+      mwCountArray.forEach(item => {
+        item.classList.add("salmon");
+      });
+      examCountArray.forEach(item => {
+        item.classList.add("salmon");
+      });
+    } else {
+      // apply the "cyan" CSS class if it's not Monday, Wednesday, or Friday
+      mwCountArray.forEach(item => {
+        item.classList.add("cyan");
+      });
+      examCountArray.forEach(item => {
+        item.classList.add("cyan");
+      });
+    }
+  }
+}
+
+boxColors.init();
+
+const credits = {
+  author: 'mitchell thompson',
+  publishedOn: new Date(2021, 10, 14).toLocaleDateString()
 }
 
 // get array pages
@@ -586,11 +468,9 @@ function uniFunc(rooms, num, countElem) {
 for (let i = 0; i < playerArray.length; i++) {
   playerArray[i].mwBtn.addEventListener('click', () => {
     uniFunc(playerArray[i].mwRooms, playerArray[i].num, playerArray[i].mwCounter);
-    playerArray[i].data.mw.push(playerArray[i].mwRooms.length)
   });
   playerArray[i].examBtn.addEventListener('click', () => {
     uniFunc(playerArray[i].examRooms, playerArray[i].num, playerArray[i].examCounter);
-    playerArray[i].data.exams.push(playerArray[i].examRooms.length)
   })
 }
 
@@ -726,7 +606,100 @@ examCountF.addEventListener('mouseleave', function(e) {
   arrayBoxes[5].classList.add('hidden');
 });
 
-const credits = {
-  author: 'mitchell thompson',
-  publishedOn: new Date(2021, 10, 14)
+
+// object to run at certain times for dataset
+// is active instead of day of week testing ???
+
+const harvest = {
+  intervalId: null,
+
+  init() {
+    // Call the function immediately
+    this.checkDayAndTime();
+
+    // Set up a setInterval to call the function every minute
+
+    if (!this.intervalId) {
+
+      this.intervalId = setInterval(() => {
+        this.checkDayAndTime();
+      }, 60 * 1000); // 1 minute in milliseconds
+
+    }
+  },
+
+  checkDayAndTime() {
+
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // Sunday is 0, Monday is 1, and so on
+    const hour = now.getHours();
+    const minutes = now.getMinutes();
+
+    console.log(now.toLocaleTimeString())
+
+    // Check if all players are active and it is beore 7pm
+    if (playerArray.every(player => player.isActive === true) && time.hours() !== null && ( time.minutes() === 0 || time.minutes() === 30 )) {
+
+      this.collect(); // Collect data
+      console.log('Holy cow, it\'s a harvest frost troll!');
+
+    } else if (hour >= 19) {
+
+      console.log('its late at night')
+
+      // clearInterval(this.intervalId);
+
+    } else {
+
+      console.log('conditions not met');
+
+    }
+
+    this.intervalId = null;
+
+  },
+
+  collect() {
+
+    const now = new Date();
+
+    console.log(`Current time: ${now}`);
+
+    playerArray.forEach((player, index) => {
+
+      player.data.mw.push(player.mwRooms.length);
+      player.data.exams.push(player.examRooms.length);
+
+      console.log(`Player ${index + 1} MW rooms: ${player.mwRooms.length}`);
+      console.log(`Player ${index + 1} exam rooms: ${player.examRooms.length}`);
+    });
+  }
+};
+
+// call init on harvest
+harvest.init();
+
+
+// for testing above data harvest / tracking logic
+
+const test_harvest = {
+  intervalId: null,
+  getRand() {
+    return Math.floor(Math.random() * 4)
+  },
+  pushItem(arr, num) {
+    for (i = 0; i < num; i++) {
+      arr.push(i)
+    }
+  },
+  init(time) {
+    intervalId = setInterval(() => {
+      playerArray.forEach(player => {
+        this.pushItem(player.mwRooms, this.getRand())
+      })
+    }, time)
+  },
+  stopInterval() {
+    clearInterval(intervalId)
+  }
 }

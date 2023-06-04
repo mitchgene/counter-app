@@ -179,7 +179,7 @@ button {
   padding: .4rem
 }
 
-h3.winning{
+h3.winning {
   color: gold;
 }
 
@@ -193,7 +193,7 @@ h3.winning{
 }
 
 .mw-count.salmon {
-  box-shadow: 2px 2px 6px lightsalmon;
+  box-shadow: 2px 2px 6px salmon;
 }
 
 .mw-count.cyan {
@@ -216,7 +216,7 @@ h3.winning{
 }
 
 .exam-count.salmon {
-  box-shadow: 2px 2px 6px lightsalmon;
+  box-shadow: 2px 2px 6px salmon;
 }
 
 .exam-count.cyan {
@@ -279,4 +279,102 @@ h3.winning{
 
 .array-box.charcoal {
   box-shadow: 1px 1px 4px #484F5D;
+}
+
+/* charts */
+.chart-nav-list {
+  margin-top: 9rem;
+}
+
+.chart-link{
+  margin: 1.4rem 0;
+  display: block;
+  padding: 1.1rem 6rem .6rem .3rem;
+  width: 100%;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #484848;
+  cursor: pointer;
+}
+
+.chart-link.dark{
+  color: #b1b1b1;
+}
+
+.chart-link:hover{
+  background-color: #404c5075;
+  color: #f3f3f3;
+}
+
+.chart-link.active {
+  background-color: #1b495899;
+  color: #78cff5;
+}
+
+.chart-container line {
+  stroke: rgb(182, 189, 191);
+}
+
+/* checkbox slider styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  margin-top: 2rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 1.9px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #1EAEDB;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
